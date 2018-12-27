@@ -155,24 +155,6 @@ def checkDependencies():
         del matplotlib
     except ImportError:
         raise ImportError, "ERROR: Unable to import Matplotlib"
-    
-    try:
-        try:
-            cmd = str(os.getcwd() + "/src/tools/clustalw/clustalw.exe")
-            input = "./src/tools/clustalw/test/test.fasta"
-            clustalw = ClustalwCommandline(cmd, infile=input) 
-            clustalw()
-            os.remove("./src/tools/clustalw/test/test.aln")
-            os.remove("./src/tools/clustalw/test/test.dnd")
-        except:
-            cmd = str(os.getcwd() + "/src/tools/clustalw/clustalw")
-            input = "./src/tools/clustalw/test/test.fasta"
-            clustalw = ClustalwCommandline(cmd, infile=input) 
-            clustalw()
-            os.remove("./src/tools/clustalw/test/test.aln")
-            os.remove("./src/tools/clustalw/test/test.dnd")
-    except:
-        raise StandardError, "ERROR: Unable to run ClustalW"
         
 
 def checkSIFTS():
