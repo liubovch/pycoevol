@@ -254,7 +254,7 @@ class alignment:
             for position in range(0, align_length):
                 column = alignment[:, position]
                 align.append(column)
-                if column[0] != "-":
+                if column.find("-") == -1:
                     columns.append(column)
                     positions.append(position)
                     
@@ -269,6 +269,9 @@ class alignment:
                     seq = str(record.seq)
                     new_align.append(seq)
             
+            if len(columns) == 0:
+                return None
+
             numb_blocks = len(new_align) / len(columns[0])
             for i in range(0, len(columns[0])):
                 for j in range(0, len(new_align), len(columns[0])):
