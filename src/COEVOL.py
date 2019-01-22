@@ -118,12 +118,11 @@ class coevolution:
             for i in range(len(columns1)):
                 for j in range(len(columns2)):
                     max_pos.append(mi[(i, j)])
-            max_val = max(max_pos)
                     
             for i in range(len(columns1)):
                 for j in range(len(columns2)):
                     if mi[(i, j)] != 0.0:
-                        info[(i, j)] = mi[(i, j)] * 1.0 / max_val
+                        info[(i, j)] = mi[(i, j)] * 1.0
                     else:
                         info[(i, j)] = 0.0
         
