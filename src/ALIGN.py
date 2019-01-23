@@ -270,7 +270,7 @@ class alignment:
                     new_align.append(seq)
             
             if len(columns) == 0:
-                return None
+                return None, None
 
             numb_blocks = len(new_align) / len(columns[0])
             for i in range(0, len(columns[0])):
@@ -294,7 +294,7 @@ class alignment:
                 else:
                     self.cut_alignment.append(seq)      
                
-            return self.cut_alignment
+            return self.cut_alignment, positions
             
      
     def alignScore(self, id, alignment):

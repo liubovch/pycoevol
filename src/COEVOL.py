@@ -80,8 +80,8 @@ class coevolution:
         aln = class_alignment(self.id1, self.id2, self.alignment,
                               self.parameterfile, self.dirname)
         
-        alignment1 = aln.cutAlignment(file1, id1, alignment)
-        alignment2 = aln.cutAlignment(file2, id2, alignment)
+        alignment1, positions1 = aln.cutAlignment(file1, id1, alignment)
+        alignment2, positions2 = aln.cutAlignment(file2, id2, alignment)
 
         try:
             assert len(alignment1) == len(alignment2)
@@ -448,7 +448,7 @@ class coevolution:
                 print >> results, protein1[i], protein1[j], \
                 round((info[(i, j)]), 4)
             else:
-                print >> results, str(i + 1), str(j + 1), \
+                print >> results, positions1[i] + 1, positions2[j] + 1, \
                 round((info[(i, j)]), 4)
         results.close()
     
