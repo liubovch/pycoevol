@@ -717,8 +717,8 @@ def twoDimensionalMatrix(column, score_matrix):
                 
     return two_d
         
-def log21(n):  
-    return log(n) * 1.0 / log(21)
+def log20(n):
+    return log(n) * 1.0 / log(20)
 
 def ln(n): 
     return log(n) * 1.0 / log(e)
@@ -762,7 +762,7 @@ def mutualInformation(i, j, cols1, cols2, pD1, pD2):
         pX = pD1[i][p[0]]
         pY = pD2[j][p[1]]
         inside = (pXY * 1.0) / (pX * pY)
-        outside = pXY * log21(inside)
+        outside = pXY * log20(inside)
         mi += outside
     return mi
 
