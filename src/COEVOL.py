@@ -1161,25 +1161,24 @@ def bestResults(input, output, best_info, surface1, surface2, interface):
                 all.append(value)
     
     a = all
-    sort = sorted(a, key=lambda a: a[2])
-    length = len(sort)
-    position = length - best_info
-    threshold = sort[position]
-    
+    sort = sorted(a, key=lambda a: a[2], reverse=True)
+    # length = len(sort)
+    # position = length - best_info
+    # threshold = sort[position]
+
     out_best = open(output, "w")
     count = 0
-    for line in all:
+    for line in sort:
         res1 = line[0]
         res2 = line[1]
         mi = float(line[2])
         value = [res1, res2]
-        if mi >= threshold[2]:
-            count += 1 
-            if value in interface and count <= best_info:
-                print >> out_best, res1, res2, mi, "Interface contact"
-            elif count <= best_info:
-                print >> out_best, res1, res2, mi
-            else: pass
+        count += 1
+        if value in interface and count <= best_info:
+            print >> out_best, res1, res2, mi, "Interface contact"
+        elif count <= best_info:
+            print >> out_best, res1, res2, mi
+        else: pass
     out_best.close()
 
 def drawHistogram(input, output):
